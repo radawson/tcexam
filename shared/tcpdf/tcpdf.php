@@ -2891,7 +2891,6 @@ class TCPDF {
 	 * @since 1.4
 	 */
 	public function setCompression($compress=true) {
-		$this->compress = false;
 		if (function_exists('gzcompress')) {
 			if ($compress) {
 				if ( !$this->pdfa_mode) {
@@ -14525,6 +14524,7 @@ class TCPDF {
 			//multi patch array
 			$patch_array = $coords;
 		}
+
 		$bpcd = 65535; //16 bits per coordinate
 		//build the data stream
 		$this->gradients[$n]['stream'] = '';
