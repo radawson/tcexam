@@ -32,7 +32,7 @@
 
 require_once('../config/tce_config.php');
 $pagelevel = 0;
-//require_once('../../shared/code/tce_authorization.php');
+require_once('../../shared/code/tce_authorization.php');
 $thispage_title = 'Color Picker';
 require_once('../code/tce_page_header_popup.php');
 echo '<script src="'.K_PATH_SHARED_JSCRIPTS.'inserttag.js" type="text/javascript"></script>'.K_NEWLINE;
@@ -99,7 +99,7 @@ function F_html_color_picker($callingform, $callingfield, $tag)
     echo F_getCSRFTokenField().K_NEWLINE;
     echo '</form>'.K_NEWLINE;
     echo '</div>'.K_NEWLINE;
-?>
+    echo <<<EOD
 <script type="text/javascript">
 //<![CDATA[
 // variables
@@ -111,22 +111,14 @@ var hexChars = '0123456789ABCDEF';
 // ------------------------------------------------------------
 // capture event
 // ------------------------------------------------------------
-if (window.captureEvents) {
-    document.captureEvents(Event.MOUSEMOVE);
-}
 document.onmousemove = FJ_get_coordinates;
 
 // ------------------------------------------------------------
 // Get cursor coordinates and store on Xpos and Ypos variables
 // ------------------------------------------------------------
 function FJ_get_coordinates(e) {
-    if (window.captureEvents) {
-        Xpos = e.pageX;
-        Ypos = e.pageY;
-    } else {
-        Xpos = (event.clientX + document.body.scrollLeft);
-        Ypos = (event.clientY + document.body.scrollTop);
-    }
+    Xpos = (event.clientX + document.body.scrollLeft);
+    Ypos = (event.clientY + document.body.scrollTop);
 
     //calculate color
     if (Xpos<=50) {
@@ -237,7 +229,7 @@ document.getElementById('CSELECTED').value='#000000';
 FJ_pick_color(1);
 //]]>
 </script>
-<?php
+EOD;
 return;
 }
 

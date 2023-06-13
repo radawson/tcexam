@@ -1890,7 +1890,6 @@ function F_questionForm($test_id, $testlog_id, $formname)
                 $str .= 'case '.$key.':{document.getElementById(\''.$fieldid.'\').checked=true;var submittime=new Date();document.getElementById(\'reaction_time\').value=submittime.getTime()-document.getElementById(\'display_time\').value;document.getElementById(\'autonext\').value=1;document.getElementById(\''.$formname.'\').submit();break;}'.K_NEWLINE;
             }
             $str .= '}}'.K_NEWLINE;
-            $str .= 'if (!document.all) {document.captureEvents(Event.KEYPRESS);}';
             $str .= 'document.onkeypress=actionByChar;'.K_NEWLINE;
             // script for autosaving text answers
             if ($m['question_type'] == 3) {
